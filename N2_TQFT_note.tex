@@ -5,183 +5,155 @@
 \newcommand{\so}{\mathrm{so}(3)_k}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
-\newcommand{\NS}{\mathcal{NS}}
-\title{$N=2$-preserving selection rules for the flow $k\to k-2$\\ and the massive vacua of the massless phase}
+\title{Selection rules for the $N=2$ flow $k\to k-2$ with superfields as building blocks,\\ and the massive vacua of the massless phase}
 \date{Working note}
 \begin{document}
 \maketitle
 
-\noindent\textbf{Setup.}
+\section{Rule: nodes are made of full superfields}
+
+A superprimary and its superdescendants must enter an algebra together. The building blocks are therefore not the sectors $(l,m,s)$ of the bosonic subalgebra, but the NS superfields
+\begin{equation}
+[l,m]\equiv\big[(l,m,0)\oplus(l,m,2)\big]\otimes\overline{\big[(l,-m,0)\oplus(l,-m,2)\big]},\qquad l+m\ \text{even},\qquad [l,m]\sim[k-l,\,m+K],
+\end{equation}
+with $K=k+2$.
+Each superfield contains all its components: the bottom component, the $G_{-1/2}$, $\bar G_{-1/2}$ and $G_{-1/2}\bar G_{-1/2}$ descendants, and the D-term. The fermionic mixed components are included, so the chiral algebra is the full $N=2$ algebra with $G^\pm$.
+
+In the bosonic diagonal model of N2Gab (2.5) the left-only descendants $(l,m,2)\otimes\overline{(l,-m,0)}$ are absent. That is why the sector-by-sector analysis of the previous versions was not a supersymmetric one.
+
+For odd $k$ every superfield has a unique representative with $l$ even, and then $m$ is even mod $2K$. The superfield fusion is $su(2)_k$ on $l$ and addition on $m$, so
+\begin{equation}
+\{\text{NS superfields}\}\ \simeq\ \so\times\Z_K,\qquad [l,m]\leftrightarrow(l\in\so,\ m/2\in\Z_K),\qquad d_{[l,m]}=d_l .
+\end{equation}
+There are $(k+1)(k+2)/2$ superfields. The Verlinde lines that commute with the $N=2$ algebra are labelled by the same set. The line $L_{[L,M]}$ acts on $[l,m]$ uniformly on all components, by $\frac{S_{Ll}}{S_{0l}}e^{i\pi Mm/K}$. Here:
 \begin{itemize}
-\item We use the bosonic $N=2$ coset with fields $(l,m,s)$, the charge-conjugation completion $C$, and the S-matrix of N2Gab eq.~(2.6), normalised by $1/K$ with $K=k+2$. Throughout, $k$ is odd.
-\item For a node $T\subset C$ (a closed set of fields, selection.pdf \S2.3), $F_T$ is the set of Verlinde lines commuting with $T$. Its global index is $\mu_T=(\sum_{F_T}d^2)^2$ (paul.pdf (5)), and $\lambda_T=\sqrt{\mu_T}$ is the index of $T\subset C$.
-\item All numbers come from \texttt{n2\_susy.py} and \texttt{n2\_nodes.py}, run for $k=3,\dots,11$.
+\item $L_{[L,0]}$ ($L$ even) are the $\so$ lines;
+\item $L_{[0,2n]}$ is the phase symmetry $X\to\omega^nX$ (N2Gab \S5.4).
 \end{itemize}
+A node $T$, its commuting lines $F_T$ and the global index $\mu_T=(\sum_{F_T}d^2)^2$ are defined as in selection.pdf and paul.pdf, now with superfields.
 
-\section{The extra rule: $N=2$-closed nodes}
+\emph{What drops out.} In the sector-by-sector analysis we found extra lines, $L_{(0,0,2)}$ and $L_{(0,K,\pm1)}$. They act differently on the components of one superfield: $L_{(0,0,2)}$ is trivial on all NS superfields, and $L_{(0,K,\pm1)}$ gives opposite signs on bottom and top components. So they are not lines of the supersymmetric theory. $L_{(0,K,\pm1)}$ reappears below as a global $R$-symmetry.
 
-In the bosonic model the supercurrents act on local fields only through the diagonal field
+All numbers come from \texttt{n2\_superfields.py}, checked for $k=3,\dots,13$.
+
+\section{UV: the smallest node containing the perturbation}
+
+The perturbation is the F-term of the chiral superfield $[k,k]\sim[0,-2]$ ($X^k$), plus its conjugate. The smallest node is
 \begin{equation}
-(0,0,2)\ \ni\ G^\pm\bar G^\pm,\ G^\pm\bar G^\mp\qquad(h=\bar h=3/2),
+T_{UV}=\langle[k,k]\rangle=\{[0,2n]\}_{n\in\Z_K}\simeq\Z_K,\qquad F_{UV}=\{L_{[L,0]}\}_{L\ \rm even}=\so,\qquad \mu_{UV}=(\dim\so)^2,
 \end{equation}
-because $(0,0,2)\times(l,m,s)=(l,m,s+2)$ maps a field to its superpartner sector.
-
-We call a node \emph{$N=2$-closed} if, with every $(l,m,s)$, it contains $(l,m,s+2)$. Equivalently, it contains $(0,0,2)$. The neutral algebra of an $N=2$-preserving flow must be $N=2$-closed.
-
-The perturbation is the F-term $G^-_{-1/2}\bar G^-_{-1/2}$ of the chiral primary $(k,k,0)\sim(0,-2,2)$, and it sits in $(k,k,2)\sim(0,-2,0)$ (plus its conjugate). Adding its superconformal primary already forces closure, since $(0,-2,2)\times(0,2,0)=(0,0,2)$.
-
-\section{UV: the smallest $N=2$-closed node of $(0,-2,0)$}
-
-\begin{align}
-N^S_{UV}&\equiv\langle(0,-2,0),(0,-2,2)\rangle=\{(0,2n,0),(0,2n,2)\}_{n\in\Z_K},\\
-F&=\{(L,0,0),(L,0,2)\}_{L\ \rm even}\simeq \so\times\Z_2 ,
-\end{align}
+with $\dim\so=\sum_{L\,\rm even}d_L^2=K/(4\sin^2\frac\pi K)$. In standard labels ($|m|\le l$), $T_{UV}$ contains the superprimaries
 \begin{equation}
-\mu(N^S_{UV})=4\,(\dim\so)^2,\qquad \dim\so=\sum_{L\ \rm even}d_L^2=\frac{K}{4\sin^2(\pi/K)} .
+[0,0],\qquad [k,m],\ m=-k,-k+2,\dots,k,\qquad h=\frac{k(k+2)-m^2}{4K},\quad q=\frac mK .
 \end{equation}
-Here $\Z_2=\{1,L_{(0,0,2)}\}$. The line $L_{(0,0,2)}$ acts as $(-1)^s$, i.e.\ it is $+1$ on NS fields and $-1$ on Ramond fields.
-
-\paragraph{Content.} $N^S_{UV}$ consists of $K$ NS supermultiplets. Their superconformal primaries $[l,m]$, with $|m|\le l$, are
-\begin{equation}
-[0,0]\quad\text{and}\quad [k,m],\ \ m=-k,-k+2,\dots,k,\qquad h=\frac{k(k+2)-m^2}{4K},\quad q=\frac mK .
-\end{equation}
-Each $[l,m]$ contains:
-\begin{itemize}
-\item the bottom component, of dimension $\Delta=2h$, in $(l,m,0)$;
-\item $G^\pm_{-1/2}\bar G^\pm_{-1/2}$ components, with $\Delta=2h+1$, in $(l,m,2)$;
-\item the D-term, with $\Delta=2h+2$, which is always irrelevant.
-\end{itemize}
 
 \begin{center}\small
 \begin{tabular}{cll}
 \toprule
-$k$ & relevant, $N=2$-preserving & relevant, $N=2$-breaking (bottom components)\\
+$k$ & relevant, $N=2$-preserving & relevant components that break $N=2$\\
 \midrule
-3 & F-terms of $[3,\pm3]$, $\Delta=8/5$ & $[3,\pm3]$ ($\Delta=3/5$), $[3,\pm1]$ ($\Delta=7/5$)\\
-5 & F-terms of $[5,\pm5]$, $\Delta=12/7$ & $[5,\pm5]$ ($5/7$), $[5,\pm3]$ ($13/7$)\\
-$\ge7$ & F-terms of $[k,\pm k]$, $\Delta=2-2/K$ & $[k,\pm k]$ ($\Delta=k/K$) only\\
+3 & F-terms of $[3,\pm3]$, $\Delta=8/5$ & bottoms of $[3,\pm3]$ ($3/5$), $[3,\pm1]$ ($7/5$)\\
+5 & F-terms of $[5,\pm5]$, $\Delta=12/7$ & bottoms of $[5,\pm5]$ ($5/7$), $[5,\pm3]$ ($13/7$)\\
+$\ge7$ & F-terms of $[k,\pm k]$, $\Delta=2-\frac2K$ & bottoms of $[k,\pm k]$ ($k/K$)\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\noindent So the only $N=2$-preserving relevant perturbation in $N^S_{UV}$ is $\phi_{UV}$ itself, and it is exclusive to this node.
+\noindent D-terms have $\Delta=2h+2>2$ and are never relevant. So $\phi_{UV}$ is the only $N=2$-preserving relevant perturbation in $T_{UV}$, and it is exclusive to it.
 
-\paragraph{All $N=2$-closed nodes containing $\phi_{UV}$.} For odd $k$, every nontrivial line of $\so$ generates all of $\so$ under fusion (checked). The nodes containing $N^S_{UV}$ therefore correspond to the four subrings of $F$:
+Every nontrivial line of $\so$ generates all of $\so$ (checked). Hence the only nodes containing $T_{UV}$ are $T_{UV}$ ($\mu=\dim^2\so$) and the complete theory $C_k$ ($\mu=1$). $C_k$ contains the F-terms of all $X^j$, and those with $j<k$ are exclusive to it.
 
-\begin{center}\small
-\begin{tabular}{llll}
-\toprule
-node & fields & $F$ & $\mu$\\
-\midrule
-$N^S_{UV}$ & $(0,2n,s)$, $s$ even & $\so\times\Z_2$ & $4\dim^2\so$\\
-simple currents & all $(0,m,s)$ (incl.\ Ramond) & $\so$ & $\dim^2\so$\\
-$\NS_k$ & all NS fields ($s$ even) & $\Z_2$ & 4\\
-$C$ & everything & 1 & 1\\
-\bottomrule
-\end{tabular}
-\end{center}
+\section{IR: the node of the IR operator}
 
-\noindent The NS fields of the simple-current node are those of $N^S_{UV}$, so it has no new $N=2$ perturbation. $\NS_k$ contains the F-terms of all chiral primaries $X^j\leftrightarrow[j,\pm j]$, $j=1,\dots,k$. Those with $j<k$ are exclusive to it.
-
-\section{IR: the $N=2$-closed node of the IR operator}
-
-The $k-2$ model is approached by the D-term of the non-BPS $(4,\pm2,0)$ (N2Gab \S5.3). A D-term is $N=2$-preserving and lies in $(4,\pm2,0)$ itself. Its $N=2$-closed node is
+The $(k-2)$ model is approached by the D-term of the non-BPS superfield $[4,\pm2]$ (N2Gab \S5.3, $\Delta=2+10/k$). For $k'=k-2\ge5$:
 \begin{equation}
-\langle(4,2,0),(0,0,2)\rangle_{k-2}=\NS_{k-2},\qquad F=\Z_2,\qquad \mu=4 .
+\langle[4,2]\rangle_{k-2}=C_{k-2},\qquad F=\{1\},\qquad \mu_{IR}=1 .
 \end{equation}
-The only $N=2$-closed IR nodes containing it are $\NS_{k-2}$ ($\mu=4$) and $C_{k-2}$ ($\mu=1$). For $k-2<4$, $(4,2,0)$ does not exist, but any IR NS operator with $l\neq0$ again generates $\NS_{k-2}$.
-
-\section{Selection rules (selection.pdf \S3) with the $N=2$ constraint}
+The reason: $l=4$ generates all of $\mathrm{so}(3)_{k-2}$, and $m=2$ generates $\Z_{K-2}$. For $k\le5$ the field $[4,2]$ does not exist, but any IR superfield with $l\neq0$ and $m\neq0$ again generates $C_{k-2}$.
 
 \begin{center}\small
 \begin{tabular}{cccc}
 \toprule
-$k$ & $\mu(N^S_{UV})$ & $\mu(\NS_k)$ & $\mu(\NS_{k-2})$ \\
+$k$ & $\dim\so$ & $\mu(T_{UV})$ & $\mu(\langle[4,2]\rangle_{k-2})$\\
 \midrule
-3 & 52.36 & 4 & 4\\
-5 & 345.65 & 4 & 4\\
-7 & 1479.85 & 4 & 4\\
-9 & 4801.50 & 4 & 4\\
-11 & 12880.78 & 4 & 4\\
+3 & 3.618 & 13.09 & ---\\
+5 & 9.296 & 86.41 & ---\\
+7 & 19.23 & 369.96 & 1\\
+9 & 34.65 & 1200.38 & 1\\
+11 & 56.75 & 3220.20 & 1\\
+13 & 86.75 & 7525.70 & 1\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\paragraph{(a) Perturbation by $\phi_{UV}$ alone: no massless IR.} The flow stays in $N^S_{UV}$. By transportability, all of $F=\so\times\Z_2$ is preserved at every scale. No IR node matches $\mu=4\dim^2\so$. More strongly, no IR of the form ``$(k-2)$ model $\oplus$ gapped vacua'' can carry $\so$:
-\begin{enumerate}
-\item A line cannot connect the $c_{k-2}>0$ vacuum to a $c=0$ vacuum, so it acts on the CFT vacuum by a number $\chi(L)=\sum_jn_jd_j^{IR}>0$.
-\item A positive number for every line compatible with fusion is necessarily $\chi=d_L$.
-\item Then $d_L\in\Q(\zeta_K)\cap\Q(\zeta_{8(K-2)})\cap\mathbb R=\Q$, since $\gcd(K,K-2)=1$ for $K$ odd. But $d_2=1+2\cos(2\pi/K)\notin\Q$ for odd $K\ge5$.
-\end{enumerate}
-The flow is therefore fully massive. It is the Chebyshev flow, which is the unique superpotential keeping $\so$ (N2Gab \S4).
+\section{Selection rules}
 
-\paragraph{(b) The massless flow.} The couplings of $X^k$ and $X^{k-2}$ have dimensions $2/K$ and $4/K$, so they are resonant. At $O(\lambda^2)$ the linear LG deformation $X^{k+2}+\lambda X^k$ therefore also switches on the F-term of $X^{k-2}$, which lies in $(k-2,k-2,2)\sim(2,-4,0)$. This field is exclusive to $\NS_k$. This is the CFT form of the second-order obstruction of N2Gab \S3.4/\S5.2. The neutral algebra becomes
+\paragraph{(a) $X^k$ alone.} The flow stays in $T_{UV}$, and $\so$ is preserved at all scales (transportability, selection.pdf \S3). The IR nodes available are $C_{k-2}$ only, with $\mu=1\neq\dim^2\so$. So there is no massless IR, as in item (d) of selection.pdf \S3.
+
+This holds even allowing extra gapped vacua. A line cannot connect the $c_{k-2}>0$ vacuum to a gapped one, so it acts on the CFT vacuum by a number $\chi(L)=\sum n_jd_j^{IR}>0$. Positivity forces $\chi=d_L$. But $d_L\in\Q(\zeta_K)$ and $d_j^{IR}\in\Q(\zeta_{8(K-2)})$, whose real intersection is $\Q$ for odd $K$, while $d_2=1+2\cos\frac{2\pi}K\notin\Q$ for $K\ge5$.
+
+The flow is therefore fully massive. It is the Chebyshev deformation, the unique superpotential keeping $\so$ (N2Gab \S4).
+
+\paragraph{(b) The massless flow.} The couplings of $X^k$ and $X^{k-2}$ have dimensions $2/K$ and $4/K=2\cdot\frac2K$, so they are resonant. At $O(\lambda^2)$ the linear deformation $X^{k+2}+\lambda X^k$ therefore also turns on the F-term of $[k-2,k-2]\sim[2,-4]$. This superfield is exclusive to $C_k$, and it is where the second-order obstruction of N2Gab \S3.4 sits. The node becomes
 \begin{equation}
-\NS_k\ \longrightarrow\ \NS_{k-2},\qquad \mu=4=4 ,
+C_k\ \longrightarrow\ C_{k-2},\qquad \mu=1=1 .
 \end{equation}
-and the rule is satisfied. What survives is only the $\Z_2$ line $L_{(0,0,2)}$, which separates the NS from the Ramond sector. $\so$ is not a symmetry of the massless flow.
-
-\paragraph{An extra symmetry that is not in $F$.} The lines $L_{(0,K,\pm1)}$, with $L_{(0,K,1)}^2=L_{(0,0,2)}$, act on $(l,m,s)$ by $(-1)^m i^{-s}$. Consequently:
-\begin{itemize}
-\item They act trivially on both perturbations $(0,-2,0)$ and $(2,-4,0)$, and on the IR $(4,\pm2,0)$. They are therefore exact symmetries of the massless flow.
-\item They act by $-1$ on $(0,0,2)$ and on the chiral primaries $(j,j,0)$ with $j$ odd, e.g.\ $X=(1,1,0)$. So they commute with the flow but not with the $N=2$-closed node. They are the $R$-parity $X\to-X$, $W\to-W$ (compensated by $\theta\to i\theta$).
-\item The largest (not $N=2$-closed) node on which they act trivially is $E_k=\{(l,m,0):l,m\ \text{even}\}$. It has $\mu(E_k)=16$, and $E_k\subset\NS_k$ with relative index $2$.
-\end{itemize}
+The selection rule is satisfied, but it is empty: \emph{no line commuting with $N=2$ survives the massless flow}.
 
 \section{Entropic order parameters and the massive vacua}
 
-\paragraph{Language (entropic.pdf \S3, modular.pdf \S3.7).} Take a two-interval region $R=R_1\cup R_2$ with cross-ratio $x$. Its complement $R'$ is again two intervals, with cross-ratio $1-x$. For a pair $T\subset M$ of nodes, define:
-\begin{itemize}
-\item the order parameter $S_{T|M}(x)\equiv S_{M(R)}(\omega|\omega\circ\varepsilon)=I_M(x)-I_T(x)$ (modular.pdf (3.68)), which tests the intertwiners;
-\item its dual $\tilde S_{T|M}(1-x)$ on $R'$, which tests the twists.
-\end{itemize}
-The certainty relation (entropic.pdf (3.25)) reads
+\paragraph{Language.} For a pair of algebras $O\subset M$ on a region $R$ with index $\lambda$, the certainty relation (entropic.pdf (3.25)) reads
 \begin{equation}
-S_{T|M}(x)+\tilde S_{T|M}(1-x)=\log\lambda_{T|M},\qquad 0\le S,\tilde S\le\log\lambda_{T|M}.
+S_{M(R)}(\omega|\omega\circ E)+S_{O(R)'}(\omega|\omega\circ E')=\log\lambda,\qquad 0\le\cdot\le\log\lambda .
 \end{equation}
-In $d=2$ intertwiners and twists are not distinguished by topology, as they are in $d>2$ (balls versus shells). Both are non-local operators of two-interval regions, labelled by the same set $F\simeq$ DHR (paul.pdf), and exchanging them is $R\leftrightarrow R'$, $x\leftrightarrow1-x$. What distinguishes phases is the behaviour at large scale for fixed $x$ (entropic.pdf \S3.4, \S4):
+The first term tests the charged operators (intertwiners), the second the twists.
+
+In $d=2$ these two kinds of operator are not distinguished by the topology of their regions. Take a two-interval region with cross-ratio $x$: its complement is again two intervals, with cross-ratio $1-x$. The twists of one are the intertwiners of the other, so the certainty relation just pairs $x$ with $1-x$. For a single interval $R$ (entropic.pdf (3.58)), the complement is two half-lines, and the twist implementing the symmetry on $R$ sits there exactly like an intertwiner of that two-component region.
+
+The phase is read from the large-scale behaviour at fixed geometry (entropic.pdf \S3.4, \S4):
 \begin{itemize}
-\item \emph{massless:} $S(x)$ is a nontrivial conformal function rising from $0$ to $\log\lambda$;
-\item \emph{gapped, sectors unbroken:} $S\to0$ (area law) and $\tilde S\to\log\lambda$ (constant law), for all $x$;
-\item \emph{gapped, broken:} $S\to\log\lambda_{\rm vac}$ (constant law) and $\tilde S\to\log(\lambda/\lambda_{\rm vac})$, independent of $x$.
+\item \emph{massless:} conformal functions;
+\item \emph{gapped, unbroken:} charged part $\to0$, twists $\to\log\lambda$;
+\item \emph{gapped, broken:} charged part $\to\log\lambda_{\rm vac}$ (constant law), with $1\le\lambda_{\rm vac}\le\lambda$.
 \end{itemize}
-$\lambda_{\rm vac}$ is the total quantum dimension of the topological (vacuum-degeneracy) operators, i.e.\ $D^2_{\rm TQFT}$. For invertible lines it is the number of vacua in one orbit. Positivity gives
+Here $\lambda_{\rm vac}=D^2_{\rm TQFT}$ is the total quantum dimension of the topological (vacuum-degeneracy) operators. For a group it is the number of vacua in one orbit.
+
+\paragraph{Massless flow: lines give nothing.} The node pair is $C_k\to C_{k-2}$ with $\lambda=1$, so every order parameter built from lines commuting with $N=2$ vanishes identically. Nothing topological is forced on top of the $(k-2)$ model by such lines. In particular, no TQFT inside the CFT vacuum is required.
+
+\paragraph{Massless flow: the $R$-parity.} The complete theory has one global symmetry that commutes with the perturbation. It is the $R$-parity $G_R$: $X\to-X$, $W\to-W$, compensated by $\theta\to i\theta$. On bosonic operators it is a $\Z_2$; on fermions it squares to $(-1)^F$.
+\begin{itemize}
+\item It maps each superfield to itself but acts differently on its components, so it does not commute with $N=2$ and is not a node line. This is the only place where $L_{(0,K,\pm1)}$ enters.
+\item Take $O=C^{G_R}$ (the $G_R$-even operators) $\subset C$, with $\lambda=|G_R|=2$. The charged operators are the odd chiral fields, e.g.\ $X$. We use the single-interval order parameter $S_{C(R)}(\omega|\omega\circ E_\psi)$ of entropic.pdf (3.58).
+\item \emph{CFT vacuum:} $X\to0$ and $G_R$ is unbroken, so the order parameter $\to0$.
+\item \emph{Massive vacua:} $W(v)\neq0$ and $G_R$ flips the sign of $W$, so a massive vacuum is never $G_R$-invariant: $\lambda_{\rm vac}\ge2$. The certainty bound gives $\lambda_{\rm vac}\le|G_R|=2$. Hence
 \begin{equation}
-1\le D^2_{\rm TQFT}=\lambda_{\rm vac}\le\lambda_{T|M}.
+D^2_{\rm TQFT}=2:\qquad \langle X\rangle=\pm i\sqrt\lambda,\qquad S_{C(R)}(\omega|\omega\circ E_\psi)\to\log2 ,
 \end{equation}
-Because $\lambda$ is scale independent (transportability), a vacuum in which all sectors stay massless requires $\mu_{UV}=\mu_{IR}$. If instead some sectors become massive in the same vacuum, they carry $D^2_{\rm TQFT}=\sqrt{\mu_{UV}/\mu_{IR}}$.
-
-\paragraph{Massless flow, CFT vacuum.} For $\NS_k\subset C$ we have $\mu_{UV}=\mu_{IR}=4$, so $\sqrt{4/4}=1$. No topological operators appear on top of the $(k-2)$ model in its own vacuum. The massless algebra $A_m$ of massless.pdf contains all of $\NS_{k-2}$.
-
-\paragraph{Massless flow, massive vacua. The TQFT.}
-\begin{itemize}
-\item \emph{Pair $\NS_k\subset C$} ($\lambda=2$; charged fields are the Ramond fields). Nothing in this pair forces extra vacua. In the massive vacua the fermions are massive and the Ramond intertwiners decay (area law), so $S\to0$ and $\tilde S\to\log2$. The line $L_{(0,0,2)}$ is unbroken.
-\item \emph{Pair $E_k\subset\NS_k$} ($\lambda=2$; charged fields are the $R$-odd NS fields, e.g.\ $X$). The value of the superpotential at a massive vacuum is $W(v)\neq0$, and $R$-parity maps $W\to-W$. So massive vacua come in pairs exchanged by $R$-parity, $\langle X\rangle=\pm i\sqrt\lambda$. The order parameter $S_{E|\NS}(x)\to\log2$ with a constant law, and its dual $\to0$.
-\item \emph{Bounds.} $2\le D^2_{\rm TQFT}\le\lambda(E_k\subset C)=4$. The Witten index $k+1=(k-1)+2$ fixes $D^2_{\rm TQFT}=2$.
+with a constant law, while the twist parameter $\to0$.
 \end{itemize}
-The TQFT consists of the two vacua $X=\pm i\sqrt\lambda$. Its topological local operators are $\{1,\mathrm{sign}(X)\}$, with $R$-parity broken and $L_{(0,0,2)}$ unbroken.
+This uses only the certainty relation and $W(v)\neq0$. It agrees with the Witten index, $k+1=(k-1)+2$. The bound covers vacua related by symmetry; vacua not related by any symmetry cannot be bounded this way, and the Witten index excludes them here.
 
-\paragraph{Chebyshev flow (check).} In $N^S_{UV}$, $\lambda=2\dim\so$ and everything is massive.
+\paragraph{Check with the Chebyshev flow (a).} Here $\lambda=\dim\so\cdot|G_R|$.
 \begin{itemize}
-\item Acting with a line on a vacuum of a gapped phase gives a superposition of vacua with non-negative integer multiplicities, and the largest eigenvalue of that integer matrix is $d_L$. Since $d_L\notin\Z$, $\so$ cannot act on a single vacuum: at least $\deg\Q(d_2)=\varphi(K)/2$ vacua are needed. The regular action needs $(k+1)/2$ vacua.
-\item $L_{(0,0,2)}$ is unbroken, and $R$-parity doubles the vacua.
+\item In a gapped phase a line maps a vacuum to a superposition of vacua with non-negative integer multiplicities, and the largest eigenvalue of that matrix is $d_L$. Since $d_L\notin\Z$, $\so$ cannot be unbroken: it needs at least $\deg\Q(d_2)=\varphi(K)/2$ vacua, and $(k+1)/2$ for the regular action, which gives $\lambda_{\rm vac}=\dim\so$.
+\item $G_R$ doubles the vacua.
 \end{itemize}
-Together this gives $\tfrac{k+1}{2}\times2=k+1$ massive vacua, which is exactly the Chebyshev vacuum count (N2Gab \S4). The same bound shows that two massive vacua can never host $\so$ for $k\ge5$.
+The total is $\tfrac{k+1}2\cdot2=k+1$, exactly the Chebyshev vacua. The same bound shows that two massive vacua cannot host $\so$ for $k\ge5$. This is another way to see that the massless flow must break $\so$ explicitly.
 
-\paragraph{Relation to massless.pdf.} The conjecture (massless and massive together $\Rightarrow$ a symmetry charging the massive operators) is realised here across vacua. The symmetry is $R$-parity $L_{(0,K,\pm1)}$. It is invisible in the $N=2$-closed node (it does not commute with $(0,0,2)$), but it commutes with the flow. The massive vacua are its orbit, and $\mathrm{sign}(X)$ is the massive, charged topological operator.
+\paragraph{Relation to massless.pdf.} In the massless flow massless and massive physics coexist, in different vacua. The symmetry predicted by the conjecture is $G_R$. The massive operators are the $G_R$-odd ones (e.g.\ $X$, with $\langle X\rangle\ne0$ in the massive vacua). In the CFT vacuum the massless algebra $A_m$ is all of $C_{k-2}$.
 
 \section*{Summary}
 \begin{enumerate}
-\item Smallest $N=2$-closed node of $(0,-2,0)$: $N^S_{UV}=\{(0,2n,0),(0,2n,2)\}$, i.e.\ $K$ supermultiplets $[0,0],[k,m]$ ($m$ odd). Its only $N=2$-preserving relevant field is $\phi_{UV}$. $F=\so\times\Z_2$ and $\mu=4\dim^2\so$. It has no massless IR, so perturbing by $\phi_{UV}$ alone gives the massive Chebyshev flow with $k+1$ vacua.
-\item The massless flow needs the resonant F-term of $X^{k-2}$, which is exclusive to $\NS_k$. The rule is then $\NS_k\to\NS_{k-2}=\langle(4,2,0),(0,0,2)\rangle$, with $\mu=4$ at both ends. Only $L_{(0,0,2)}$ (NS vs Ramond) survives in $F$.
-\item The TQFT on top of the $(k-2)$ model is two vacua exchanged by $R$-parity, $D^2=2$, within the entropic bound $2\le D^2\le4$. There is no topological sector inside the CFT vacuum.
+\item With superfields as units, the smallest algebra containing $(0,-2,0)$ is $\{[0,2n]\}\simeq\Z_K$: the superprimaries $[0,0]$ and $[k,m]$ ($m$ odd). Its only $N=2$-preserving relevant perturbation is the F-term of $X^k$. $F=\so$ and $\mu=\dim^2\so$. It has no massless IR, so it gives the Chebyshev flow with $k+1$ vacua.
+\item The massless flow needs the resonant F-term of $X^{k-2}$, which forces the complete node: $C_k\to C_{k-2}$, $\mu=1$. No line commuting with $N=2$ survives.
+\item The TQFT on top of the $(k-2)$ model consists of two vacua exchanged by $R$-parity. The entropic bound $\lambda_{\rm vac}\le|G_R|=2$ and $W(v)\ne0$ fix $D^2_{\rm TQFT}=2$. There is no topological sector inside the CFT vacuum.
 \end{enumerate}
 
 \paragraph{Caveats.}
 \begin{itemize}
-\item Odd $k$ only. For even $k$ the line $[k,0,0]$ is invertible and survives (N2Gab App.~D).
-\item ``Flow inside $N^S_{UV}$ = Chebyshev'' uses the uniqueness statement of N2Gab \S4.
-\item The field argument assumes that IR lines have dimensions in the cyclotomic field of the $(k-2)$ model.
-\item The Witten-index count of the massive vacua is LG input, not a consequence of the node analysis.
+\item Odd $k$ only; for even $k$ the line $[k,0]$ is invertible and survives (N2Gab App.~D).
+\item ``Flow inside $T_{UV}$ = Chebyshev'' uses N2Gab \S4.
+\item Index theory for fermionic nets is used at the level of the NS superfield fusion ring.
+\item The field argument assumes IR line dimensions lie in the cyclotomic field of the $(k-2)$ model.
 \end{itemize}
 \end{document}
